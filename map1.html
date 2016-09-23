@@ -1,0 +1,71 @@
+<!-- Google map demo. Show user's current location.
+03092016 Mandy -->
+
+<!DOCTYPE html5>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+     }
+    </style>
+  </head>
+  <body>
+    <h3>Google Maps Demo</h3>
+    <div id="map"></div>
+    <br><br>
+    <p>Coordinates</p>
+    <p id="text"></p>
+    
+    <script>
+      var x = document.getElementById("text");
+      var posText = "Hello";
+        
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(myMap);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }       
+        
+      function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+      }
+
+      function myMap(position) { //position is Google map object name, cannot change
+        var contentString = "This is my approximate current position.";
+        var mapCanvas = document.getElementById('map');
+        var mapLatLong = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        
+        showPosition(position);
+        
+        var mapOptions = {
+          center: mapLatLong,
+          zoom: 18
+        }
+        
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+            
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+            
+        var marker = new google.maps.Marker({
+          position: mapLatLong,
+          map: map,
+          title: posText,
+        });
+            
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+          });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=getLocation"></script>
+
+  </body>
+</html>
