@@ -1,0 +1,64 @@
+<!-- Google map demo. Show a fixed location. Example: GRIDAKL -->
+<!-- Author: Mandy -->
+<!-- Create Date: 26092016 -->
+
+<!DOCTYPE html5>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+     }
+    </style>
+  </head>
+  <body>
+    <h3>Google Maps Demo</h3>
+    <div id="map"></div>
+    <br><br>
+    <p>Coordinates</p>   
+    <p id="text"></p>
+    
+    <script>
+      var x = document.getElementById("text");
+      var posText = "Grid AKL";
+      var latitude = -36.843549;
+      var longitude = 174.757203;
+      
+      function showPosition() {
+        x.innerHTML = "Latitude: " + latitude +
+        "<br>Longitude: " + longitude;
+      }
+         
+      function initMap() {
+        var contentString = "<div id='content'> <b>GRID AKL</b> <br>117 Pakenham Street West <br>Auckland, NZ, 1010<br><img src='FullSizeRender.jpg' alt='GRIDAKL image' style='width:120px; height:100px;' /></div>"
+        
+        showPosition();
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: latitude, lng: longitude},
+          zoom: 16
+        });
+        
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+            
+        var marker = new google.maps.Marker({
+          position: {lat: latitude, lng: longitude},
+          map: map,
+          title: posText,  
+        });
+            
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+
+    </script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
+  </body>
+</html>
