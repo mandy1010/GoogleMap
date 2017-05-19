@@ -1,0 +1,35 @@
+<!--current location weather. 
+    Mandy Apr 2016-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>   
+  
+  <link rel="stylesheet" type="text/css" href="w1.css">
+  <script type='text/javascript' src='w1.js'></script>
+  <meta charset="UTF-8">
+  <title>My Weather Map</title>
+  <body>
+    <div id="header">
+      <div class="left"><h2 id="currentLocation">Getting location...</h1></div>
+      
+      <div class="navbar"></div>
+    </div>
+    <!--<div id="container" style="width:30%">-->
+      
+      <p> Current Temperature: </p>
+<!--
+    <h2 class="center-text cpmtemt-title" id="currentTemp">...</h2>
+    <h6 class="center-text"><a href="#" id="toggle=>Toggle C/F</a></h6> -->
+      <div> <font style=font-size:16px;" id="currentTemp"> </font> &nbsp;&nbsp;
+      <font style="font-size: 8px;"><a href="#" id="toggle">Toggle C/F </a></font></div>
+      <!--<div class="content-body">-->
+      <!--  <p> High-Low Temperature: <font class="center-text" id="high-low"></font>     
+        Weather: <font class="center-text" id="currentWeather"></font></p>-->
+      </div>
+    </div>  
+    <p> <a href="main.html">-- Back to homepage</a> </p>
+    <div id="map"></div>
+  </body>
+</html>
